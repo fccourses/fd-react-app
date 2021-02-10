@@ -1,57 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Greeting from './components/Greeting';
 
-function App() {
-  return (
-    <div className='App'>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-
-  return React.createElement(
-    'div',
-    { className: 'App' },
-    React.createElement(
-      'header',
-      { className: 'App-header' },
-      React.createElement('img', {
-        className: 'App-logo',
-        alt: 'logo',
-        src: logo,
-      }),
-      React.createElement(
-        'p',
-        null,
-        'Edit ',
-        React.createElement('code', null, 'src/App.js'),
-        ' and say hi to reload.'
-      ),
-      React.createElement(
-        'a',
-        {
-          className: 'App-link',
-          href: 'https://reactjs.org',
-          target: '_blank',
-          rel: 'noopener noreferrer',
-        },
-        'Learn React'
-      )
-    )
-  );
+class App extends Component {
+  render() {
+    const user = {
+      firstName: 'John',
+      url: 'http://localhost:3000/favicon.ico',
+    };
+    return (
+      <div>
+        <Greeting name={user.firstName} photo={user.url} />
+        <Greeting name='Eugene' photo={user.url} />
+        <Greeting name='Masha' photo={user.url} />
+      </div>
+    );
+  }
 }
 
 export default App;
