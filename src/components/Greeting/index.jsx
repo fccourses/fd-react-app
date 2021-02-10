@@ -1,16 +1,18 @@
 import { Component } from 'react';
 
-class Greeting extends Component {
+class Aloha extends Component {
   render() {
-    const { name, photo } = this.props;
-    console.log(name, photo);
+    const { name, photo, isGreeting } = this.props;
+
     return (
       <div className='GREETING-ELEMENT'>
-        <h1 className='heading'>Hello {name}</h1>
-        <img src={photo} alt={name}/>
+        <h1 className='heading'>
+          {isGreeting ? 'Привет' : 'До завтра'} {name}
+        </h1>
+        <img src={photo} alt={name} />
       </div>
     );
   }
 }
 
-export default Greeting;
+export default Aloha;

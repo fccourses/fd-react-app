@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Greeting from './components/Greeting';
+import Aloha from './components/Greeting';
 
 class App extends Component {
   render() {
@@ -10,9 +10,9 @@ class App extends Component {
     };
     return (
       <div>
-        <Greeting name={user.firstName} photo={user.url} />
-        <Greeting name='Eugene' photo={user.url} />
-        <Greeting name='Masha' photo={user.url} />
+        <Aloha name={user.firstName} photo={user.url} isGreeting={true} />
+        <Aloha name='Eugene' photo={user.url} isGreeting={false} />
+        <Aloha name='Masha' photo={user.url} isGreeting={true} />
       </div>
     );
   }
