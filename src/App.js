@@ -9,11 +9,11 @@ class App extends Component {
       url: 'http://localhost:3000/favicon.ico',
     };
     return (
-      <div>
-        <Aloha name={user.firstName} photo={user.url} isGreeting={true} />
-        <Aloha name='Eugene' photo={user.url} isGreeting={false} />
-        <Aloha name='Masha' photo={user.url} isGreeting={true} />
-      </div>
+      <>
+        <Aloha name={user.firstName} photo={user.url} isGreeting />
+        <Aloha name='Eugene' photo={user.url} />
+        <Aloha name='Masha' photo={user.url} isGreeting />
+      </>
     );
   }
 }
