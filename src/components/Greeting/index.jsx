@@ -1,12 +1,27 @@
 import { Component } from 'react';
 
 class Aloha extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isGreeting: true,
+    };
+  }
+
+  switch = () => {
+    const { isGreeting } = this.state;
+    this.setState({
+      isGreeting: !isGreeting,
+    });
+  };
+
   render() {
-    const { name, photo, isGreeting } = this.props;
-    console.log(isGreeting)
+    const { isGreeting } = this.state;
+    const { name, photo } = this.props;
+
     return (
       <div className='GREETING-ELEMENT'>
-        <h1 className='heading'>
+        <h1 className='heading' onClick={this.switch}>
           {isGreeting ? 'Привет' : 'До завтра'} {name}
         </h1>
         <img src={photo} alt={name} />
