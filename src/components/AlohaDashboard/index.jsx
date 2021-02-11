@@ -50,12 +50,16 @@ class AlohaDashboard extends Component {
     });
   };
   mapAloha = (user) => (
-    <Aloha key={user.id} name={`${user.firstName} ${user.lastName}`} />
+    <Aloha
+      key={user.id}
+      isExciting={this.props.isExciting}
+      name={`${user.firstName} ${user.lastName}`}
+    />
   );
 
   render() {
     const { users, isDirectOrder } = this.state;
-
+    
     return (
       <div>
         Порядок сортировки по id: {isDirectOrder ? 'Прямой' : 'Реверс'}

@@ -17,16 +17,12 @@ class Aloha extends Component {
 
   render() {
     const { isGreeting } = this.state;
-    const { name, children } = this.props;
+    const { name, children, isExciting } = this.props;
 
-    if(!isGreeting){
-      return <h1>Пока</h1>
-    }
-    
     return (
       <div className='GREETING-ELEMENT'>
         <h1 className='heading' onClick={this.switchGreeting}>
-          {isGreeting ? 'Привет' : 'До завтра'} {name}
+          {isGreeting ? 'Привет' : 'До завтра'} {name} {isExciting ? '!' : '.'}
         </h1>
         {children}
       </div>
