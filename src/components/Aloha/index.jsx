@@ -17,14 +17,16 @@ class Aloha extends Component {
 
   render() {
     const { isGreeting } = this.state;
-    const { name, photo } = this.props;
+    const { name, children } = this.props;
 
     return (
       <div className='GREETING-ELEMENT'>
         <h1 className='heading' onClick={this.switchGreeting}>
           {isGreeting ? 'Привет' : 'До завтра'} {name}
         </h1>
-        <img src={photo} alt={name} />
+        {
+          children
+        }
       </div>
     );
   }
