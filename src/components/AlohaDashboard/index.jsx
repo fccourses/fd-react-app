@@ -52,14 +52,25 @@ class AlohaDashboard extends Component {
   mapAloha = (user) => (
     <Aloha
       key={user.id}
+      id={user.id}
+      deleteUser={this.deleteUser}
       isExciting={this.props.isExciting}
       name={`${user.firstName} ${user.lastName}`}
     />
   );
 
+  deleteUser = (idToDelete) => {
+    const { users } = this.state;
+    const usersCopy = JSON.parse(JSON.stringify(users));
+
+    this.setState({
+      users: usersCopy.filter((user) => user.id !== idToDelete),
+    });
+  };
+
   render() {
     const { users, isDirectOrder } = this.state;
-    
+
     return (
       <div>
         Порядок сортировки по id: {isDirectOrder ? 'Прямой' : 'Реверс'}

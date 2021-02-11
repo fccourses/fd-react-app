@@ -15,6 +15,11 @@ class Aloha extends Component {
     });
   };
 
+  deleteHandler = () => {
+    const { deleteUser, id } = this.props;
+    deleteUser(id);
+  };
+
   render() {
     const { isGreeting } = this.state;
     const { name, children, isExciting } = this.props;
@@ -25,6 +30,7 @@ class Aloha extends Component {
           {isGreeting ? 'Привет' : 'До завтра'} {name} {isExciting ? '!' : '.'}
         </h1>
         {children}
+        <button onClick={this.deleteHandler}>DELETE</button>
       </div>
     );
   }
