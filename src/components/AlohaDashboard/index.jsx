@@ -1,17 +1,18 @@
-import { Component } from 'react';
+import { Fragment, Component } from 'react';
 import Aloha from '../Aloha';
 
 class AlohaDashboard extends Component {
   mapAloha = (user) => (
-    <li>
+    <Fragment key={user.id}>
       <Aloha name={`${user.firstName} ${user.lastName}`} />
-    </li>
+    </Fragment>
   );
 
   render() {
     const { users } = this.props;
 
-    return <ul>{users.map(this.mapAloha)}</ul>;
+    return <div>{users.map(this.mapAloha)}</div>;
   }
 }
+
 export default AlohaDashboard;

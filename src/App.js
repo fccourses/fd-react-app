@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import AlohaDashboard from './components/AlohaDashboard';
-import Aloha from './components/Aloha';
 
 class App extends Component {
   constructor(props) {
@@ -34,15 +33,33 @@ class App extends Component {
           lastName: 'Doe',
         },
       ],
+      isDirectOrder: true,
     };
   }
 
+  sortUsers = () => {
+    const { users, isDirectOrder } = this.state;
+    // const usersCopy = [...users];
+    const usersCopy = JSON.parse(JSON.stringify(users));
+    this.setState({
+      isDirectOrder: !isDirectOrder,
+      users: usersCopy.sort((a, b) => {
+        if (isDirectOrder) {
+          return b.id - a.id;
+        }
+        return a.id - b.id;
+      }),
+    });
+  };
+
   render() {
-    const { users } = this.state;
+    const { users, isDirectOrder } = this.state;
 
     return (
       <>
+        Порядок сортировки по id: {isDirectOrder?'Прямой': 'Реверс'}
         <AlohaDashboard users={users} />
+        <button onClick={this.sortUsers}>SORT</button>
       </>
     );
   }
