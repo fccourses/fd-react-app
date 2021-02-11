@@ -8,7 +8,7 @@ class Aloha extends Component {
     };
   }
 
-  switch = () => {
+  switchGreeting = () => {
     const { isGreeting } = this.state;
     this.setState({
       isGreeting: !isGreeting,
@@ -21,7 +21,7 @@ class Aloha extends Component {
 
     return (
       <div className='GREETING-ELEMENT'>
-        <h1 className='heading' onClick={this.switch}>
+        <h1 className='heading' onClick={this.switchGreeting}>
           {isGreeting ? 'Привет' : 'До завтра'} {name}
         </h1>
         <img src={photo} alt={name} />

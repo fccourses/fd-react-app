@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import AlohaDashboard from './components/AlohaDashboard';
 import Aloha from './components/Greeting';
 
 class App extends Component {
@@ -14,12 +15,11 @@ class App extends Component {
 
   render() {
     const { firstName, lastName, url } = this.state;
-    
+
     return (
       <>
-        <Aloha name={firstName} photo={url} />
-        <Aloha name='Eugene' photo={url} />
-        <Aloha name='Masha' photo={url} />
+        <Aloha name='test' />
+        <AlohaDashboard firstName={firstName} lastName={lastName} url={url} />
       </>
     );
   }
