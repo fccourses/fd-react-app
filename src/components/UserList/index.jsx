@@ -35,13 +35,29 @@ class UserList extends Component {
       users: userDB.map((user) => ({ ...user, isSelected: false })),
     };
   }
+
+  userSelector = (id) => {
+    const { users } = this.state;
+    const newUsers = [...users];
+
+    const mapNewUsers = (user) => ({
+      ...user,
+      isSelected: id === user.id ? !user.isSelected : user.isSelected,
+    });
+
+    this.setState({
+      users: newUsers.map(mapNewUsers),
+    });
+  };
+
   mapUsers = (user) => {
     return (
-    <UserCard 
-      key={user.id} 
-      user={user} 
-      isSelected={user.isSelected} 
-    />
+      <UserCard
+        key={user.id}
+        user={user}
+        userSelector={this.userSelector}
+        isSelected={user.isSelected}
+      />
     );
   };
   render() {
