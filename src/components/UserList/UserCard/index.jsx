@@ -1,7 +1,6 @@
 function UserCard(props) {
   const {
-    user: { id, firstName, lastName },
-    isSelected,
+    user: { id, firstName, lastName, isSelected },
     userSelector,
   } = props;
 

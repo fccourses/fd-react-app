@@ -14,16 +14,14 @@ class UserList extends Component {
     setUsers(newUsers.map(mapNewUsers));
   };
 
-  mapUsers = (user) => {
-    return (
-      <UserCard
-        key={user.id}
-        user={user}
-        userSelector={this.userSelector}
-        isSelected={user.isSelected}
-      />
-    );
-  };
+  mapUsers = (user) => (
+    <UserCard
+      key={user.id}
+      user={user}
+      userSelector={this.userSelector}
+    />
+  );
+
   render() {
     const { users } = this.props;
     return (

@@ -39,7 +39,7 @@ class App extends Component {
     };
   }
 
-  setUsers = (newUsers) => this.setState({ users: [...newUsers] });
+  setUsers = (newUsers) => this.setState({ users: newUsers });
 
   render() {
     const { users } = this.state;
