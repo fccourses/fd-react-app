@@ -35,6 +35,7 @@ class AlohaDashboard extends Component {
       isDirectOrder: true,
     };
   }
+
   sortUsers = () => {
     const { users, isDirectOrder } = this.state;
     // const usersCopy = [...users];
@@ -49,6 +50,7 @@ class AlohaDashboard extends Component {
       }),
     });
   };
+  
   mapAloha = (user) => (
     <Aloha
       key={user.id}

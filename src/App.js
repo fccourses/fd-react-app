@@ -1,22 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import AlohaDashboard from './components/AlohaDashboard';
+import UserList from './components/UserList';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isExciting: true,
-    };
-  }
-  render() {
-    return (
-      <>
-        <AlohaDashboard isExciting={this.state.isExciting} />
-        {/* <GoodbyeList /> */}
-      </>
-    );
-  }
+function App(props) {
+  return (
+    <>
+      <UserList />
+    </>
+  );
 }
 
 export default App;
