@@ -3,52 +3,39 @@ import React, { Component } from 'react';
 class StopWatch extends Component {
   constructor(props) {
     super(props);
-    this.intervalId = null;
+    this.timeoutId = null;
     this.state = {
+      isRunning: true,
       time: new Date(0, 0, 0, 0, 0, 0, 0),
     };
   }
-
   tick = () => {
     const { time } = this.state;
     time.setSeconds(time.getSeconds() + 1);
     this.setState({ time });
   };
-
   start = () => {
-    if (!this.intervalId) {
-      this.intervalId = setInterval(this.tick, 1000);
+    if (this.state.isRunning) {
+      this.timeoutId = setTimeout(this.tick, 1000);
     }
   };
-
   stop = () => {
-    clearInterval(this.intervalId);
-    this.intervalId = null;
+    clearTimeout(this.timeoutId);
+    this.timeoutId = null;
   };
-
   reset = () => {
     this.stop();
     this.setState({ time: new Date(0, 0, 0, 0, 0, 0, 0) });
   };
-  /* 
-    AFTER FIRST RENDER
-  */
   componentDidMount() {
     this.start();
   }
-
-  /* 
-    AFTER EACH RENDER
-  */
-  componentDidUpdate() {}
-
-  /* 
-    BEFORE UNMOUNT
-  */
+  componentDidUpdate() {
+    this.start();
+  }
   componentWillUnmount() {
     this.stop();
   }
-
   render() {
     const { time } = this.state;
     return (
