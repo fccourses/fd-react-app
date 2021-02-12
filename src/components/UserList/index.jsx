@@ -28,21 +28,24 @@ const userDB = [
     lastName: 'Doe',
   },
 ];
-
 class UserList extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      users: userDB,
+      users: userDB.map((user) => ({ ...user, isSelected: false })),
     };
   }
-
-  mapUsers = (user) => <UserCard key={user.id} user={user} />;
-
+  mapUsers = (user) => {
+    return (
+    <UserCard 
+      key={user.id} 
+      user={user} 
+      isSelected={user.isSelected} 
+    />
+    );
+  };
   render() {
     const { users } = this.state;
-
     return (
       <section>
         <h1>USER LIST FROM DB</h1>
@@ -51,5 +54,4 @@ class UserList extends Component {
     );
   }
 }
-
 export default UserList;
