@@ -21,56 +21,50 @@ class StopWatch extends Component {
   };
 
   start = () => {
-    if (this.state.isRunning) {
-      this.timeoutId = setTimeout(this.tick, 1000);
-    }
+    this.setState({ isRunning: true });
   };
 
   stop = () => {
+    this.setState({ isRunning: false });
+  };
+
+  clear = () => {
     clearTimeout(this.timeoutId);
     this.timeoutId = null;
   };
 
   reset = () => {
-    this.stop();
+    this.clear();
     this.setState({ time: new Date(0, 0, 0, 0, 0, 0, 0) });
   };
 
   componentDidMount() {
     this.start();
   }
+
   componentDidUpdate() {
-    this.start();
+    const { isRunning } = this.state;
+    this.clear();
+
+    if (isRunning) {
+      this.timeoutId = setTimeout(this.tick, 1000);
+    }
   }
+
   componentWillUnmount() {
-    this.stop();
+    this.clear();
   }
   render() {
-    const { time } = this.state;
+    const { time, isRunning } = this.state;
     return (
       <article>
         <h1>{time.toLocaleTimeString('it-IT')}</h1>
-        <button
-          onClick={() => {
-            this.start();
-          }}
-        >
-          START
-        </button>
-        <button
-          onClick={() => {
-            this.stop();
-          }}
-        >
-          STOP
-        </button>
-        <button
-          onClick={() => {
-            this.reset();
-          }}
-        >
-          RESET
-        </button>
+        {isRunning ? (
+          <button onClick={this.stop}>STOP</button>
+        ) : (
+          <button onClick={this.start}>START</button>
+        )}
+        <button onClick={this.reset}>RESET</button>
       </article>
     );
   }
