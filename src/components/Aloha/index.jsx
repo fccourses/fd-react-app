@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import styles from './Aloha.module.css';
 
 class Aloha extends Component {
   constructor(props) {
@@ -23,10 +24,10 @@ class Aloha extends Component {
   render() {
     const { isGreeting } = this.state;
     const { name, children, isExciting } = this.props;
-
+    console.log(styles)
     return (
-      <div className='GREETING-ELEMENT'>
-        <h1 className='heading' onClick={this.switchGreeting}>
+      <div className={styles.container}>
+        <h1 className='' onClick={this.switchGreeting}>
           {isGreeting ? 'Привет' : 'До завтра'} {name} {isExciting ? '!' : '.'}
         </h1>
         {children}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from './StopWatch.module.css';
 
 class StopWatch extends Component {
   constructor(props) {
@@ -39,7 +40,7 @@ class StopWatch extends Component {
   };
 
   componentDidMount() {
-    this.start();
+    // this.start();
   }
 
   componentDidUpdate() {
@@ -57,14 +58,24 @@ class StopWatch extends Component {
   render() {
     const { time, isRunning } = this.state;
     return (
-      <article>
-        <h1>{time.toLocaleTimeString('it-IT')}</h1>
-        {isRunning ? (
-          <button onClick={this.stop}>STOP</button>
-        ) : (
-          <button onClick={this.start}>START</button>
-        )}
-        <button onClick={this.reset}>RESET</button>
+      <article className={styles.container}>
+        <h1 className={styles.curretTime}>
+          {time.toLocaleTimeString('it-IT')}
+        </h1>
+        <div className={styles.controls}>
+          {isRunning ? (
+            <button className={styles.btn} onClick={this.stop}>
+              STOP
+            </button>
+          ) : (
+            <button className={styles.btn} onClick={this.start}>
+              START
+            </button>
+          )}
+          <button className={styles.btn} onClick={this.reset}>
+            RESET
+          </button>
+        </div>
       </article>
     );
   }
