@@ -4,29 +4,38 @@ class StopWatch extends Component {
   constructor(props) {
     super(props);
     this.timeoutId = null;
+
     this.state = {
-      isRunning: true,
+      isRunning: false,
       time: new Date(0, 0, 0, 0, 0, 0, 0),
     };
   }
+
   tick = () => {
-    const { time } = this.state;
-    time.setSeconds(time.getSeconds() + 1);
-    this.setState({ time });
+    this.setState((state, props) => {
+      const { time } = state;
+      const newTime = new Date(time.getTime());
+      newTime.setSeconds(newTime.getSeconds() + 1);
+      return { time: newTime };
+    });
   };
+
   start = () => {
     if (this.state.isRunning) {
       this.timeoutId = setTimeout(this.tick, 1000);
     }
   };
+
   stop = () => {
     clearTimeout(this.timeoutId);
     this.timeoutId = null;
   };
+
   reset = () => {
     this.stop();
     this.setState({ time: new Date(0, 0, 0, 0, 0, 0, 0) });
   };
+
   componentDidMount() {
     this.start();
   }
