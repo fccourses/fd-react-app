@@ -6,20 +6,24 @@ class Counter extends Component {
 
     this.state = {
       count: 0,
-      isRight: true,
-      coordinate: 0,
     };
   }
 
-  render () {
-    const numberToRender = this.state.count; // smell code
+  handleClick = () => {
+    const { count } = this.state;
 
-    const { count, isRight } = this.state; // fresh code
+    this.setState({
+      count: count + 1,
+    });
+  };
+
+  render () {
+    const { count } = this.state;
 
     return (
       <div>
         <div>ТЕКУЩИЙ СЧЁТ: {count}</div>
-        <button>ДОБАВИТЬ</button>
+        <button onClick={this.handleClick}>ДОБАВИТЬ</button>
       </div>
     );
   }
