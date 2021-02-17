@@ -2,11 +2,11 @@ import React from 'react';
 import SignInForm from './components/SignInForm';
 import AlohaDashboard from './components/AlohaDashboard';
 import Counter from './components/Counter';
+import Calendar from './components/Calendar';
 
 function App (props) {
-  const step = 10;
 
-  return <Counter step={step} />;
+  return <Calendar />;
 }
 
 export default App;
