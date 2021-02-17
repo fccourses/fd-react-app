@@ -3,7 +3,7 @@ import styles from './SignInForm.module.css';
 import cx from 'classnames';
 
 class SignInForm extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       email: '',
@@ -26,7 +26,7 @@ class SignInForm extends Component {
     this.setState({ [name]: value });
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault();
     this.setState({
       email: '',
@@ -34,7 +34,7 @@ class SignInForm extends Component {
     });
   };
 
-  render() {
+  render () {
     const { email, password, isPasswordValid, isemailValid } = this.state;
 
     const emailClassNames = cx(styles.input, {
@@ -69,9 +69,9 @@ class SignInForm extends Component {
 
 export default SignInForm;
 
-const myClassNames = (styleObject) => {
+/* const myClassNames = styleObject => {
   return Object.entries(styleObject)
     .filter(([className, isAdd]) => isAdd)
     .map(([className, isAdd]) => className)
     .join(' ');
-};
+}; */

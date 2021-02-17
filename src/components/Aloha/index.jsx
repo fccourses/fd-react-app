@@ -23,14 +23,13 @@ class Aloha extends Component {
 
   render() {
     const { isGreeting } = this.state;
-    const { name, children, isExciting } = this.props;
-    console.log(styles)
+    const { name, isExciting } = this.props; // read-only info
+
     return (
       <div className={styles.container}>
         <h1 className='' onClick={this.switchGreeting}>
           {isGreeting ? 'Привет' : 'До завтра'} {name} {isExciting ? '!' : '.'}
         </h1>
-        {children}
         <button onClick={this.deleteHandler}>DELETE</button>
       </div>
     );
