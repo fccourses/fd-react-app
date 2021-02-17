@@ -6,29 +6,44 @@ class Counter extends Component {
 
     this.state = {
       count: 0,
+      isAdd: true,
     };
   }
 
   handleClick = () => {
-    const { count } = this.state;
-    const { step } = this.props;
+    this.setState((state, props) => {
+      if (state.isAdd) {
+        const newCount = state.count + props.step;
+        return {
+          count: newCount,
+        };
+      } else {
+        const newCount = state.count - props.step;
+        return {
+          count: newCount,
+        };
+      }
+    });
+  };
 
-    const newCount = count + step;
-    
+  changeMode = () => {
     this.setState({
-      count: newCount,
+      isAdd: !this.state.isAdd,
     });
   };
 
   render () {
-    const { count } = this.state;
+    const { count, isAdd } = this.state;
     const { step } = this.props;
 
     return (
       <div>
         <div>ТЕКУЩИЙ СЧЁТ: {count}</div>
-        <div>ДОБАВИТЬ: {step}</div>
-        <button onClick={this.handleClick}>ДОБАВИТЬ</button>
+        <div>ШАГ: {step}</div>
+        <button onClick={this.handleClick}>
+          {isAdd ? 'ДОБАВИТЬ' : 'ОТНЯТЬ'}
+        </button>
+        <button onClick={this.changeMode}>ИЗМЕНИТЬ РЕЖИМ</button>
       </div>
     );
   }
