@@ -11,18 +11,23 @@ class Counter extends Component {
 
   handleClick = () => {
     const { count } = this.state;
+    const { step } = this.props;
 
+    const newCount = count + step;
+    
     this.setState({
-      count: count + 1,
+      count: newCount,
     });
   };
 
   render () {
     const { count } = this.state;
+    const { step } = this.props;
 
     return (
       <div>
         <div>ТЕКУЩИЙ СЧЁТ: {count}</div>
+        <div>ДОБАВИТЬ: {step}</div>
         <button onClick={this.handleClick}>ДОБАВИТЬ</button>
       </div>
     );

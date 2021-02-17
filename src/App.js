@@ -4,7 +4,9 @@ import AlohaDashboard from './components/AlohaDashboard';
 import Counter from './components/Counter';
 
 function App (props) {
-  return <Counter />;
+  const step = 10;
+
+  return <Counter step={step} />;
 }
 
 export default App;
