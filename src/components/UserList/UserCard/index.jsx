@@ -1,4 +1,6 @@
-function UserCard(props) {
+import PropTypes from 'prop-types';
+
+function UserCard (props) {
   const {
     user: { id, firstName, lastName, isSelected },
     userSelector,
@@ -20,5 +22,17 @@ function UserCard(props) {
     </article>
   );
 }
+
+export const userPropType = PropTypes.shape({
+  id: PropTypes.number.isRequired,
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  isSelected: PropTypes.bool,
+}).isRequired;
+
+UserCard.propTypes = {
+  user: userPropType,
+  userSelector: PropTypes.func,
+};
 
 export default UserCard;

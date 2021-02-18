@@ -1,8 +1,9 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 import styles from './Aloha.module.scss';
 
 class Aloha extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       isGreeting: true,
@@ -21,7 +22,7 @@ class Aloha extends Component {
     deleteUser(id);
   };
 
-  render() {
+  render () {
     const { isGreeting } = this.state;
     const { name, isExciting } = this.props; // read-only info
 
@@ -35,5 +36,12 @@ class Aloha extends Component {
     );
   }
 }
+
+Aloha.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  isExciting: PropTypes.bool,
+  deleteUser: PropTypes.func,
+};
 
 export default Aloha;
