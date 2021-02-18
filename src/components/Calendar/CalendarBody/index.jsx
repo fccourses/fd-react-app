@@ -1,6 +1,7 @@
 import React from 'react';
 import { getWeek, parse } from 'date-fns';
 import Week from '../Week';
+import Month from '../Month';
 
 const WeekDays = () => {
   return (
@@ -28,12 +29,7 @@ const CalendarBody = props => {
           <WeekDays />
         </thead>
         <tbody>
-          <Week year={2021} week={6} />
-          <Week year={2021} week={7} />
-          <Week year={2021} week={8} />
-          <Week year={2021} week={9} />
-          <Week year={2021} week={10} />
-          <Week year={2021} week={11} />
+          <Month year={2021} month={2} />
         </tbody>
       </table>
     </div>
