@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import styles from './SignInForm.module.css';
+import styles from './SignInForm.module.scss';
 import cx from 'classnames';
+
+const initialState = {
+  email: '',
+  password: '',
+  isemailValid: true,
+  ispasswordValid: true,
+};
 
 class SignInForm extends Component {
   constructor (props) {
     super(props);
-    this.state = {
-      email: '',
-      isemailValid: true,
-      password: '',
-      ispasswordValid: true,
-    };
+    this.state = { ...initialState };
   }
 
   handleChange = ({ target: { value, name } }) => {
@@ -28,10 +30,7 @@ class SignInForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.setState({
-      email: '',
-      password: '',
-    });
+    this.setState({ ...initialState });
   };
 
   render () {

@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import styles from './Aloha.module.css';
+import styles from './Aloha.module.scss';
 
 class Aloha extends Component {
   constructor(props) {

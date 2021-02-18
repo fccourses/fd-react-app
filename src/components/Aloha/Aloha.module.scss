@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  color: red;
+  font-size: 5rem;
+  padding-top: 50px;
+
+  h1 {
+    text-transform: uppercase;
+  }
+
+  button {
+    background-color: black;
+    color: white;
+  }
+}
