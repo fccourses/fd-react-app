@@ -5,15 +5,23 @@ import Counter from './components/Counter';
 import Calendar from './components/Calendar';
 import Aloha from './components/Aloha';
 import UserCard from './components/UserList/UserCard';
+import UserList from './components/UserList';
 
 function App (props) {
-  const user = {
-    id: 1,
-    firstName: 'tete',
-    lastName: 'Doe',
-  };
+  const users = [
+    {
+      id: 1,
+      firstName: 'tete',
+      lastName: 'Doe'
+    },
+    {
+      id: 2,
+      firstName: 'tete',
+      lastName: 'Doe'
+    }
+  ];
 
-  return <UserCard user={user} />;
+  return <UserList users={users} />;
 }
 
 export default App;

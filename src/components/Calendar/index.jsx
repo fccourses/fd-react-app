@@ -6,10 +6,10 @@ class Calendar extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      currentDay: new Date(),
+      currentDay: new Date()
     };
   }
-  
+
   render () {
     return (
       <div>

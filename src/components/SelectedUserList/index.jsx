@@ -9,7 +9,7 @@ const SelectedUserList = props => {
   return (
     <div>
       {filteredUsers.map(user => (
-        <span>
+        <span key={user.id}>
           {user.firstName} {user.lastName}
         </span>
       ))}
@@ -18,11 +18,11 @@ const SelectedUserList = props => {
 };
 
 SelectedUserList.defaultProps = {
-  users: [],
+  users: []
 };
 
 SelectedUserList.propTypes = {
-  users: PropTypes.arrayOf(userPropType),
+  users: PropTypes.arrayOf(userPropType)
 };
 
 export default SelectedUserList;

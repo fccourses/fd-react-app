@@ -3,7 +3,7 @@ import { parse, addDays } from 'date-fns';
 import Day from '../Day';
 
 const Week = props => {
-  /* 
+  /*
     1. Число недели  в году
     2. Объект начала недели
 
