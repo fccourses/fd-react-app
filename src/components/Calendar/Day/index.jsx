@@ -12,7 +12,11 @@ const Day = props => {
     [styles.currentDay]: isToday(day),
   });
 
-  return <td className={classNames}>{format(day, 'd')}</td>;
+  return (
+    <td>
+      <p className={classNames}>{format(day, 'd')}</p>
+    </td>
+  );
 };
 
 Day.propTypes = {
