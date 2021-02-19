@@ -6,13 +6,13 @@ import Month from '../Month';
 const WeekDays = () => {
   return (
     <tr>
-      <td>D</td>
-      <td>D</td>
-      <td>D</td>
-      <td>D</td>
-      <td>D</td>
-      <td>D</td>
-      <td>D</td>
+      <td>S</td>
+      <td>M</td>
+      <td>T</td>
+      <td>W</td>
+      <td>T</td>
+      <td>F</td>
+      <td>S</td>
     </tr>
   );
 };
@@ -29,7 +29,7 @@ const CalendarBody = props => {
           <WeekDays />
         </thead>
         <tbody>
-          <Month year={2021} month={2} />
+          <Month year={2021} month={2} currentDay={currentDay} />
         </tbody>
       </table>
     </div>

@@ -7,7 +7,7 @@ import NamedList from './components/NamedList';
 // import UserList from './components/UserList';
 // import UserCard from './components/UserList/UserCard';
 // import Counter from './components/Counter';
-// import Calendar from './components/Calendar';
+import Calendar from './components/Calendar';
 
 const App = props => {
   return (
@@ -24,6 +24,7 @@ const App = props => {
           alt=''
         />
       </ImageWrapper>
+      <Calendar/>
     </>
   );
 };

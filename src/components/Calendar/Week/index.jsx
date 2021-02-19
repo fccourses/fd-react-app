@@ -9,7 +9,7 @@ const Week = props => {
 
   */
 
-  const { year, week } = props;
+  const { year, week , currentDay} = props;
 
   const startOfWeek = parse(`${year} ${week}`, 'Y w', new Date());
 
@@ -17,7 +17,7 @@ const Week = props => {
 
   for (let i = 0; i < 7; i++) {
     dayArray.push(
-      <Day key={`${i}-${year}-${week}`} day={addDays(startOfWeek, i)} />
+      <Day key={`${i}-${year}-${week}`} day={addDays(startOfWeek, i)} currentDay={currentDay} />
     );
   }
 
