@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './StopWatch.module.css';
 
 class StopWatch extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.timeoutId = null;
 
@@ -39,11 +39,11 @@ class StopWatch extends Component {
     this.setState({ time: new Date(0, 0, 0, 0, 0, 0, 0) });
   };
 
-  componentDidMount() {
+  componentDidMount () {
     // this.start();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate () {
     const { isRunning } = this.state;
     this.clear();
 
@@ -52,10 +52,10 @@ class StopWatch extends Component {
     }
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     this.clear();
   }
-  render() {
+  render () {
     const { time, isRunning } = this.state;
     return (
       <article className={styles.container}>

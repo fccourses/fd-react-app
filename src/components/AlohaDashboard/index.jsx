@@ -2,7 +2,7 @@ import { Fragment, Component } from 'react';
 import Aloha from '../Aloha';
 
 class AlohaDashboard extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       users: [
@@ -50,8 +50,8 @@ class AlohaDashboard extends Component {
       }),
     });
   };
-  
-  mapAloha = (user) => (
+
+  mapAloha = user => (
     <Aloha
       key={user.id}
       id={user.id}
@@ -61,16 +61,16 @@ class AlohaDashboard extends Component {
     />
   );
 
-  deleteUser = (idToDelete) => {
+  deleteUser = idToDelete => {
     const { users } = this.state;
     const usersCopy = JSON.parse(JSON.stringify(users));
 
     this.setState({
-      users: usersCopy.filter((user) => user.id !== idToDelete),
+      users: usersCopy.filter(user => user.id !== idToDelete),
     });
   };
 
-  render() {
+  render () {
     const { users, isDirectOrder } = this.state;
 
     return (

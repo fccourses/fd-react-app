@@ -18,11 +18,11 @@ const SelectedUserList = props => {
 };
 
 SelectedUserList.defaultProps = {
-  users: []
+  users: [],
 };
 
 SelectedUserList.propTypes = {
-  users: PropTypes.arrayOf(userPropType)
+  users: PropTypes.arrayOf(userPropType),
 };
 
 export default SelectedUserList;

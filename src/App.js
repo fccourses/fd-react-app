@@ -15,7 +15,7 @@ const App = props => {
       <ImageWrapper
         width='500px'
         height='500px'
-        style={{border: '2px solid red'}}
+        style={{ border: '2px solid red' }}
         onClick={alert}
         title='test'
       >
@@ -24,7 +24,7 @@ const App = props => {
           alt=''
         />
       </ImageWrapper>
-      <Calendar/>
+      <Calendar />
     </>
   );
 };
