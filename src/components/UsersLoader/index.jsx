@@ -8,11 +8,25 @@ class UsersLoader extends Component {
       users: [],
       isFetching: true,
       isError: false,
+      currentPage: 1,
     };
   }
 
   componentDidMount () {
-    fetch('https://randomuser.me/api/?page=1&results=10&seed=FD2020-2')
+    this.load();
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+    if (prevState.currentPage !== this.state.currentPage) {
+      this.load();
+    }
+  }
+
+  load = () => {
+    const { currentPage } = this.state;
+    fetch(
+      `https://randomuser.me/api/?page=${currentPage}&results=10&seed=FD2020-2`
+    )
       .then(res => res.json())
       .then(data => {
         const { results } = data;
@@ -30,13 +44,20 @@ class UsersLoader extends Component {
           isFetching: false,
         });
       });
-  }
+  };
+
+  prevPage = () => this.setState({ currentPage: this.state.currentPage - 1 });
+  nextPage = () => this.setState({ currentPage: this.state.currentPage + 1 });
 
   render () {
     const { users, isFetching, isError } = this.state;
     return (
       <div>
         <h1>USER LIST</h1>
+        <div>
+          <button onClick={this.prevPage}>Prev page</button>
+          <button onClick={this.nextPage}>Next page</button>
+        </div>
         {isFetching && <div>LOADING...</div>}
         {/*isFetching ? <div>LOADING...</div> : null*/}
         {isError && <div>ERROR</div>}
