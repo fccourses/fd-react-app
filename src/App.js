@@ -24,6 +24,9 @@ const App = props => {
             <Link to='/about'>About</Link>
           </li>
           <li>
+            <Link to='/info'>Info</Link>
+          </li>
+          <li>
             <Link to='/contacts'>Contacts</Link>
           </li>
           <li>
@@ -39,6 +42,7 @@ const App = props => {
         <Route exact path='/'>
           <Home />
         </Route>
+
         <Route path='/contacts'>
           <Contacts />
         </Route>
@@ -47,9 +51,7 @@ const App = props => {
           <UsersLoader />
         </Route>
 
-        <Route path='/about'>
-          <About />
-        </Route>
+        <Route path={['/about', '/info']} component={About} />
 
         <Route path='/window'>
           <WindowSizes />
@@ -67,7 +69,8 @@ const Contacts = () => {
   return <div>Contacts PAGE</div>;
 };
 
-const About = () => {
+const About = props => {
+  console.log(props);
   return <div>About PAGE</div>;
 };
 
