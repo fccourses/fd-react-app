@@ -1,12 +1,34 @@
 import React, { Component } from 'react';
 
 class WindowSizes extends Component {
-  render() {
+  constructor (props) {
+    super(props);
+    this.state = {
+      x: 0,
+      y: 0,
+    };
+  }
+
+  componentDidMount () {
+    window.addEventListener('resize', this.handleResize);
+  }
+
+  handleResize = () => {
+    this.setState({
+      x: window.innerWidth,
+      y: window.innerHeight,
+    });
+  };
+
+  componentWillUnmount () {
+    window.removeEventListener('resize', this.handleResize);
+  }
+
+  render () {
+    const { x, y } = this.state;
     return (
       <div>
-          Current window sizes are:
-           x - {1920}
-           y - {900}
+        Current window sizes are: x - {x}y - {y}
       </div>
     );
   }
