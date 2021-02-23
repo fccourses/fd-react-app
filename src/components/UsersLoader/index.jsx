@@ -15,6 +15,15 @@ class UsersLoader extends Component {
   }
 
   componentDidMount () {
+    const usersInString = localStorage.getItem('users');
+
+    if (usersInString) {
+      const parsedUsers = JSON.parse(usersInString);
+
+      this.setState({ users: parsedUsers, isFetching: false });
+
+      return;
+    }
     this.load();
   }
 
@@ -27,12 +36,16 @@ class UsersLoader extends Component {
   load = () => {
     const { currentPage } = this.state;
 
-    getUsers({ page: currentPage, results: 500 })
+    getUsers({ page: currentPage, results: 50 })
       .then(data => {
         const { results } = data;
+
         this.setState({
           users: results,
         });
+
+        const userStr = JSON.stringify(results);
+        localStorage.setItem('users', userStr);
       })
       .catch(e => {
         this.setState({
