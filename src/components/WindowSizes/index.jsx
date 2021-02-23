@@ -4,8 +4,8 @@ class WindowSizes extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      x: 0,
-      y: 0,
+      y: window.innerHeight,
+      x: window.innerWidth,
     };
   }
 
