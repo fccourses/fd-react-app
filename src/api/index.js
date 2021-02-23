@@ -12,7 +12,7 @@ export const getUsers = (options = {}) => {
   const defaultOptions = {
     page: 1,
     results: config.DEFAULT_AMOUNT,
-    inc: config.INCLUDE_FIELDS.join(','),
+    inc: config.INCLUDE_FIELDS,
     seed: config.API_KEY,
   };
 
