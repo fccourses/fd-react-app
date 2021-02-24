@@ -1,52 +1,43 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import styles from './Counter.module.scss';
 
 class Counter extends Component {
   constructor (props) {
     super(props);
-
     this.state = {
-      count: 0,
-      isAdd: true,
+      value: 0,
     };
   }
 
-  handleClick = () => {
-    this.setState((state, props) => {
-      if (state.isAdd) {
-        const newCount = state.count + props.step;
-        return {
-          count: newCount,
-        };
-      } else {
-        const newCount = state.count - props.step;
-        return {
-          count: newCount,
-        };
-      }
-    });
-  };
+  shouldComponentUpdate (nextProps, nextState) {
+    return nextProps.step === this.props.step;
+  }
 
-  changeMode = () => {
-    this.setState({
-      isAdd: !this.state.isAdd,
-    });
-  };
+  increment = () =>
+    this.setState((state, props) => ({ value: state.value + props.step }));
+  decrement = () =>
+    this.setState((state, props) => ({ value: state.value - props.step }));
 
   render () {
-    const { count, isAdd } = this.state;
-    const { step } = this.props;
-
+    const { value } = this.state;
+    console.log('RENDER COUNTER');
     return (
-      <div>
-        <div>ТЕКУЩИЙ СЧЁТ: {count}</div>
-        <div>ШАГ: {step}</div>
-        <button onClick={this.handleClick}>
-          {isAdd ? 'ДОБАВИТЬ' : 'ОТНЯТЬ'}
-        </button>
-        <button onClick={this.changeMode}>ИЗМЕНИТЬ РЕЖИМ</button>
+      <div className={styles.wrapper}>
+        <div>{value}</div>
+        <button onClick={this.increment}>+</button>
+        <button onClick={this.decrement}>-</button>
       </div>
     );
   }
 }
+
+Counter.defaultProps = {
+  step: 10,
+};
+
+Counter.propTypes = {
+  step: PropTypes.number,
+};
 
 export default Counter;

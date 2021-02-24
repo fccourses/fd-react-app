@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import CounterPage from './pages/Counter';
 // import ImageWrapper from './components/ImageWrapper';
 // import NamedList from './components/NamedList';
 // import SignInForm from './components/SignInForm';
@@ -24,9 +25,6 @@ const App = props => {
             <Link to='/about'>About</Link>
           </li>
           <li>
-            <Link to='/info'>Info</Link>
-          </li>
-          <li>
             <Link to='/contacts'>Contacts</Link>
           </li>
           <li>
@@ -39,39 +37,21 @@ const App = props => {
       </nav>
 
       <Switch>
-        <Route exact path='/'>
-          <Home />
-        </Route>
-
-        <Route path='/contacts'>
-          <Contacts />
-        </Route>
-
-        <Route path='/users-loader'>
-          <UsersLoader />
-        </Route>
-
-        <Route path={['/about', '/info']} component={About} />
-
-        <Route path='/window'>
-          <WindowSizes />
-        </Route>
+        <Route exact path='/' component={Home} />
+        <Route path='/contacts' component={Contacts} />
+        <Route path='/users-loader' component={UsersLoader} />
+        <Route path='/about' component={About} />
+        <Route path='/window' component={WindowSizes} />
+        <Route path='/count' component={CounterPage} />
+        <Route path='*' component={NotFound} />
       </Switch>
     </BrowserRouter>
   );
 };
 
-const Home = () => {
-  return <div>HOME PAGE</div>;
-};
-
-const Contacts = () => {
-  return <div>Contacts PAGE</div>;
-};
-
-const About = props => {
-  console.log(props);
-  return <div>About PAGE</div>;
-};
+const NotFound = () => <div>404: page not found</div>;
+const Home = () => <div>HOME PAGE</div>;
+const Contacts = () => <div>Contacts PAGE</div>;
+const About = props => <div>About PAGE</div>;
 
 export default App;
