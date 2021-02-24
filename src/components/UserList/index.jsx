@@ -23,7 +23,6 @@ class UserList extends Component {
     if (isFetching) {
       return <div>LOading...</div>;
     }
-
     if (error) {
       return <div>{error.message}</div>;
     }
