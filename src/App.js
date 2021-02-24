@@ -44,9 +44,14 @@ const App = props => {
         <Route exact path='/' component={Home} />
         <Route path='/contacts' component={Contacts} />
         <Route path='/users-loader'>
-          {/*     <DataProvider url={'/users.json'}>
-          {state => <UserList users={state.data} />}
-          </DataProvider> */}
+          
+          
+          
+          <DataProvider url={'/users.json'}>
+            {({users}) => <UserList users={users} />}
+          </DataProvider>
+
+
           <DataProvider
             url={'/phones.json'}
             children={state => {
