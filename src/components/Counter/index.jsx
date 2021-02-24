@@ -1,18 +1,20 @@
-import React, { Component, PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Counter.module.scss';
 
-/* 
-1. Не сложное состояние(без объектов)
-2. Все пропсы и состояние влияют на рендер
-*/
-
-class Counter extends PureComponent {
+class Counter extends Component {
   constructor (props) {
     super(props);
     this.state = {
       value: 0,
     };
+  }
+
+  shouldComponentUpdate (nextProps, nextState) {
+    if (nextProps.step !== this.props.step) {
+      return false;
+    }
+    return true
   }
 
   increment = () =>
@@ -22,13 +24,11 @@ class Counter extends PureComponent {
 
   render () {
     const { value } = this.state;
-    const { step } = this.props;
     console.log('RENDER COUNTER');
-    
+
     return (
       <div className={styles.wrapper}>
         <div>{value}</div>
-        <div>STEP: {step}</div>
         <button onClick={this.increment}>+</button>
         <button onClick={this.decrement}>-</button>
       </div>
