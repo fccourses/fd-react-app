@@ -10,7 +10,7 @@ import CounterPage from './pages/Counter';
 // import UserCard from './components/UserList/UserCard';
 // import Counter from './components/Counter';
 // import Calendar from './components/Calendar';
-import UsersLoader from './components/UsersLoader';
+import UsersList from './components/UserList';
 import WindowSizes from './components/WindowSizes';
 
 const App = props => {
@@ -39,7 +39,7 @@ const App = props => {
       <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/contacts' component={Contacts} />
-        <Route path='/users-loader' component={UsersLoader} />
+        <Route path='/users-loader' component={UsersList} />
         <Route path='/about' component={About} />
         <Route path='/window' component={WindowSizes} />
         <Route path='/count' component={CounterPage} />

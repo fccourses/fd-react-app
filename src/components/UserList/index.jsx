@@ -1,38 +1,43 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import UserCard, { userPropType } from './UserCard';
 
 class UserList extends Component {
-  userSelector = id => {
-    const { users, setUsers } = this.props;
-    const newUsers = [...users]; // Поверхностная копия
+  constructor (props) {
+    super(props);
+    this.state = {
+      users: [],
+      isFetching: false,
+      error: null,
+    };
+  }
 
-    const mapNewUsers = user => ({
-      ...user,
-      isSelected: id === user.id ? !user.isSelected : user.isSelected,
-    });
-
-    setUsers(newUsers.map(mapNewUsers));
-  };
-
-  mapUsers = user => (
-    <UserCard key={user.id} user={user} userSelector={this.userSelector} />
-  );
+  componentDidMount () {
+    this.setState({ isFetching: true });
+    fetch('/users.json')
+      .then(res => res.json())
+      .then(users => this.setState({ users, isFetching: false }))
+      .catch(e => this.setState({ error: e }));
+  }
 
   render () {
-    const { users } = this.props;
+    const { users, isFetching, error } = this.state;
+    if (isFetching) {
+      return <div>LOading...</div>;
+    }
+
+    if (error) {
+      return <div>{error.message}</div>;
+    }
+
     return (
-      <section>
-        <h1>USER LIST FROM DB</h1>
-        {users.map(this.mapUsers)}
-      </section>
+      <ol>
+        {users.map(u => (
+          <li key={u.id}>
+            {u.firstName} {u.lastName}
+          </li>
+        ))}
+      </ol>
     );
   }
 }
-
-UserList.propTypes = {
-  users: PropTypes.arrayOf(userPropType).isRequired,
-  setUsers: PropTypes.func,
-};
 
 export default UserList;
