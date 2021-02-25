@@ -4,6 +4,7 @@ import Parent from './Parent';
 import styles from './Tree.module.scss';
 import { UserContext, ThemeContext } from '../../contexts';
 import constants from '../../constants';
+import { withTheme } from '../HOCs';
 
 const Tree = props => {
   const { theme } = props;
@@ -21,22 +22,4 @@ const Tree = props => {
   );
 };
 
-/* const TreeWithTheme = () => {
-  return (
-    <ThemeContext.Consumer>
-      {({ theme }) => <Tree theme={theme} />}
-    </ThemeContext.Consumer>
-  );
-};
- */
-const withTheme = Component => {
-  return (
-    <ThemeContext.Consumer>
-      {({ theme }) => <Component theme={theme} />}
-    </ThemeContext.Consumer>
-  );
-};
-
-const TreeWithTheme = withTheme(Tree);
-
-export default TreeWithTheme;
+export default withTheme(Tree);

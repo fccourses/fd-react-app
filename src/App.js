@@ -35,7 +35,7 @@ class App extends Component {
       theme,
       setTheme: this.setTheme,
     };
-
+    console.log(user)
     return (
       <ThemeContext.Provider value={themeContextValue}>
         <UserContext.Provider value={user}>

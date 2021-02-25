@@ -1,11 +1,32 @@
-import { ThemeContext } from '../../contexts';
+import React, { Component } from 'react';
+import { ThemeContext, UserContext } from '../../contexts';
 
-const withTheme = Component => {
-  return (
-    <ThemeContext.Consumer>
-      {({ theme }) => <Component theme={theme} />}
-    </ThemeContext.Consumer>
-  );
-};
+export function withTheme (WrappedComponent) {
+  return class WrappedComponentWithTheme extends Component {
+    render () {
+      return (
+        <ThemeContext.Consumer>
+          {({ theme, setTheme }) => (
+            <WrappedComponent
+              theme={theme}
+              setTheme={setTheme}
+              {...this.props}
+            />
+          )}
+        </ThemeContext.Consumer>
+      );
+    }
+  };
+}
 
-export default withTheme;
+export function withUser (WrappedComponent) {
+  return class extends Component {
+    render () {
+      return (
+        <UserContext.Consumer>
+          {user => <WrappedComponent user={user} {...this.props} />}
+        </UserContext.Consumer>
+      );
+    }
+  };
+}
