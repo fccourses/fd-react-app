@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import Header from './components/Header';
 import Tree from './components/Tree';
-import { UserContext } from './contexts';
+import { UserContext, ThemeContext } from './contexts';
+import constants from './constants';
 
 /* 
   1. Создание контекста - createContext()
@@ -13,6 +15,7 @@ class App extends Component {
   constructor (props) {
     super(props);
     this.state = {
+      theme: constants.LIGHT_THEME,
       user: {
         id: 10,
         firstName: 'John',
@@ -23,16 +26,25 @@ class App extends Component {
     };
   }
 
+  setTheme = theme => this.setState({ theme });
+
   render () {
-    const { user } = this.state;
+    const { user, theme } = this.state;
+
+    const themeContextValue = {
+      theme,
+      setTheme: this.setTheme,
+    };
 
     return (
-      <UserContext.Provider value={user}>
-        <div>
-          APP
-          <Tree />
-        </div>
-      </UserContext.Provider>
+      <ThemeContext.Provider value={themeContextValue}>
+        <UserContext.Provider value={user}>
+          <div>
+            <Header />
+            <Tree />
+          </div>
+        </UserContext.Provider>
+      </ThemeContext.Provider>
     );
   }
 }
