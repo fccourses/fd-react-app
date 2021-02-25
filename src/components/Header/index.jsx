@@ -18,7 +18,7 @@ class Header extends Component {
                 [styles.darkTheme]: theme === constants.DARK_THEME,
               });
 
-              
+
 
               return (
                 <div className={classNames}>
