@@ -1,79 +1,43 @@
-import React, { Component } from 'react';
-import styles from './SignInForm.module.scss';
-import cx from 'classnames';
+import React from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import PropTypes from 'prop-types';
+import { SIGN_IN_SCHEMA } from '../../../utils/validationSchemas';
+import Input from '../Input';
 
-const initialState = {
-  email: 'sdfdsfsdf',
-  password: 'defsdf',
+const SignInForm = props => {
+  const initialValues = {
+    email: '',
+    password: '',
+  };
+
+  return (
+    <Formik
+      initialValues={initialValues}
+      onSubmit={props.onSubmit}
+      validationSchema={SIGN_IN_SCHEMA}
+    >
+      {formProps => {
+        return (
+          <Form>
+
+            <Field name={'email'}>
+              {fieldProps => <Input {...fieldProps} placeholder="EMAIL"/>}
+            </Field>
+
+            <Field name={'password'}>
+              {fieldProps => <Input {...fieldProps} type="password" />}
+            </Field>
+
+            <Field type='submit' value='Submit' />
+          </Form>
+        );
+      }}
+    </Formik>
+  );
 };
 
-class SignInForm extends Component {
-  constructor (props) {
-    super(props);
-    this.state = { ...initialState };
-  }
-
-  handleChange = ({ target: { value, name } }) => {
-    if (value.includes(' ')) {
-      this.setState({
-        [`is${name}Valid`]: false,
-      });
-    } else {
-      this.setState({
-        [`is${name}Valid`]: true,
-      });
-    }
-    this.setState({
-      [name]: value,
-    });
-  };
-
-  handleSubmit = event => {
-    event.preventDefault();
-    this.setState({ ...initialState });
-  };
-
-  render () {
-    const { email, password, ispasswordValid, isemailValid } = this.state;
-
-    const emailClassNames = cx(styles.input, {
-      [styles.invalidInput]: !isemailValid,
-    });
-    return (
-      <form className={styles.container} onSubmit={this.handleSubmit}>
-        <input /* Управляемый компонент */
-          onChange={this.handleChange}
-          value={email}
-          className={emailClassNames}
-          placeholder='Email'
-          type='email'
-          name='email'
-        />
-
-        <input type='text' />
-
-        <input /* Управляемый компонент */
-          onChange={this.handleChange}
-          value={password}
-          className={styles.input}
-          placeholder='Password'
-          type='password'
-          name='password'
-        />
-        <input
-          className={styles.input}
-          type='submit' /* НЕуправляемый компонент */
-        />
-      </form>
-    );
-  }
-}
+SignInForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default SignInForm;
-
-/* const myClassNames = styleObject => {
-  return Object.entries(styleObject)
-    .filter(([className, isAdd]) => isAdd)
-    .map(([className, isAdd]) => className)
-    .join(' ');
-}; */

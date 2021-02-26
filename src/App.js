@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-import SignUpForm from './components/forms/SignUpForm';
+import SignIn from './pages/SignIn';
 
 class App extends Component {
   render () {
     return (
-      <>
-        <SignUpForm />
-      </>
+      <BrowserRouter>
+        <Switch>
+          <Route path='/' component={SignIn} />
+          {/* <Route path='/sign-up' component={} /> */}
+        </Switch>
+      </BrowserRouter>
     );
   }
 }
