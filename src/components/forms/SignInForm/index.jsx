@@ -3,10 +3,8 @@ import styles from './SignInForm.module.scss';
 import cx from 'classnames';
 
 const initialState = {
-  email: '',
-  password: '',
-  isemailValid: true,
-  ispasswordValid: true,
+  email: 'sdfdsfsdf',
+  password: 'defsdf',
 };
 
 class SignInForm extends Component {
@@ -25,7 +23,9 @@ class SignInForm extends Component {
         [`is${name}Valid`]: true,
       });
     }
-    this.setState({ [name]: value });
+    this.setState({
+      [name]: value,
+    });
   };
 
   handleSubmit = event => {
@@ -34,7 +34,7 @@ class SignInForm extends Component {
   };
 
   render () {
-    const { email, password, isPasswordValid, isemailValid } = this.state;
+    const { email, password, ispasswordValid, isemailValid } = this.state;
 
     const emailClassNames = cx(styles.input, {
       [styles.invalidInput]: !isemailValid,
@@ -49,6 +49,9 @@ class SignInForm extends Component {
           type='email'
           name='email'
         />
+
+        <input type='text' />
+
         <input /* Управляемый компонент */
           onChange={this.handleChange}
           value={password}
