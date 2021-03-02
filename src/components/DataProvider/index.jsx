@@ -36,6 +36,7 @@ class DataProvider extends Component {
 
   render () {
     const { children } = this.props;
+    
     return children(this.state);
   }
 }

@@ -14,11 +14,12 @@ class Counter extends Component {
     if (nextProps.step !== this.props.step) {
       return false;
     }
-    return true
+    return true;
   }
 
   increment = () =>
     this.setState((state, props) => ({ value: state.value + props.step }));
+    dHookConfig
   decrement = () =>
     this.setState((state, props) => ({ value: state.value - props.step }));
 
