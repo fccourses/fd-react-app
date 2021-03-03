@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import FuncCounter from './../../components/FuncCounter';
+import FuncStopWatch from './../../components/FuncStopWatch';
 
 const Home = props => {
   const [isVisible, setIsVisible] = useState(true);
@@ -8,7 +8,7 @@ const Home = props => {
     <div>
       <h1>Home page</h1>
       <button onClick={() => setIsVisible(!isVisible)}>Switch</button>
-      {isVisible && <FuncCounter />}
+      {isVisible && <FuncStopWatch />}
     </div>
   );
 };
