@@ -12,11 +12,11 @@ const StopWatch = props => {
   useEffect(() => {
     console.log('effect');
     if (isRunning) {
-      const intervalId = setInterval(() => {
+      const timeoutId = setTimeout(() => {
         setTime(prevTime => addMilliseconds(prevTime, 1000));
       }, 1000);
       return () => {
-        clearInterval(intervalId);
+        clearTimeout(timeoutId);
       };
     }
   }, [isRunning, time]);
