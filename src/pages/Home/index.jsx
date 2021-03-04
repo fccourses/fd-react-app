@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 import { ThemeContext } from '../../contexts';
 import { THEMES } from '../../constants';
+import Loader from 'components/FuncLoader';
 
 const stylesMap = {
   [THEMES.LIGHT]: {
@@ -62,6 +63,8 @@ const Home = props => {
       <button onClick={logValue}>Log value</button>
       <br />
       <button onClick={themeSwitcher}>Switch Theme</button>
+      <br />
+      <Loader />
     </div>
   );
 };

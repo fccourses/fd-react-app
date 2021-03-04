@@ -14,8 +14,9 @@ class UserList extends Component {
     this.setState({ isFetching: true });
     fetch('/users.json')
       .then(res => res.json())
-      .then(users => this.setState({ users, isFetching: false }))
-      .catch(e => this.setState({ error: e }));
+      .then(users => this.setState({ users }))
+      .catch(e => this.setState({ error: e }))
+      .finally(() => this.setStatea({ isFetching: false }));
   }
 
   render () {

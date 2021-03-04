@@ -25,5 +25,7 @@ export const getUsers = (options = {}) => {
     arrayFormat: 'comma',
   });
 
-  return fetch(`${config.BASE_URL}/?${queryParams}`).then(res => res.json());
+  return fetch(`${config.BASE_URL}/?${queryParams}`)
+    .then(res => res.json())
+    .then(data => data.results);
 };
