@@ -1,7 +1,5 @@
 // enum - перечисляемый тип
-const themes = {
-  LIGHT_THEME: 'LIGHT',
-  DARK_THEME: 'DARK',
+export const THEMES = {
+  LIGHT: 'LIGHT',
+  DARK: 'DARK',
 };
-
-export default themes;

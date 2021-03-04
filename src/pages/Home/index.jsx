@@ -1,31 +1,36 @@
 import React, { useState, useContext } from 'react';
-import { UserContext, ThemeContext } from '../../contexts';
-import cx from 'classnames';
+import { ThemeContext } from '../../contexts';
+import { THEMES } from '../../constants';
+
+const stylesMap = {
+  [THEMES.LIGHT]: {
+    backgroundColor: 'white',
+    color: 'black',
+    height: '100vh',
+  },
+  [THEMES.DARK]: {
+    backgroundColor: 'black',
+    color: 'white',
+    height: '100vh',
+  },
+};
 
 const Home = props => {
   const [isVisible, setIsVisible] = useState(true);
-  const [user, setUser] = useContext(UserContext);
+
   const [theme, setTheme] = useContext(ThemeContext);
 
-  console.log(user);
-
-  const classNames = cx({
-    [styles.lightTheme]: ...,
-    [styles.darkTheme]: ...,
-
-  });
-
-  /* >> ThemeSwitcher << */
+  const handleSwitch = () => setIsVisible(!isVisible);
+  const themeSwitcher = () =>
+    setTheme(theme === THEMES.LIGHT ? THEMES.DARK : THEMES.LIGHT);
 
   return (
-    <div className={classNames}>
-      <h1>Home page</h1>
+    <div style={stylesMap[theme]}>
       <p>
-        <span>ID: {user.id}</span>
-        <br />
-        <span>Name: {user.name}</span>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, error!
       </p>
-      <button onClick={() => setIsVisible(!isVisible)}>Switch</button>
+      <button onClick={handleSwitch}>Switch Visibility</button>
+      <button onClick={themeSwitcher}>Switch Theme</button>
     </div>
   );
 };

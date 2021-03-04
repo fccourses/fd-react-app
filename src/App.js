@@ -1,25 +1,19 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import HomePage from './pages/Home';
-import { UserContext, ThemeContext } from './contexts';
+import HomePage from 'pages/Home';
+import { ThemeContext } from 'contexts';
+import { THEMES } from 'constants.js';
 
 const App = props => {
-  const themeState = useState('white');
-
-  const userState = useState({
-    id: 1,
-    name: 'John Smith',
-  });
+  const themeState = useState(THEMES.LIGHT);
 
   return (
     <ThemeContext.Provider value={themeState}>
-      <UserContext.Provider value={userState}>
-        <BrowserRouter>
-          <Switch>
-            <Route path='/' component={HomePage} />
-          </Switch>
-        </BrowserRouter>
-      </UserContext.Provider>
+      <BrowserRouter>
+        <Switch>
+          <Route path='/' component={HomePage} />
+        </Switch>
+      </BrowserRouter>
     </ThemeContext.Provider>
   );
 };
