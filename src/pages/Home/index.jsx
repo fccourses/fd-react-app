@@ -1,4 +1,10 @@
-import React, { useState, useContext, useEffect, useCallback } from 'react';
+import React, {
+  useState,
+  useContext,
+  useEffect,
+  useCallback,
+  useMemo,
+} from 'react';
 import { ThemeContext } from '../../contexts';
 import { THEMES } from '../../constants';
 
@@ -15,11 +21,19 @@ const stylesMap = {
   },
 };
 
+function computeValue (num) {
+  let i = 0;
+
+  for (let j = 0; j < 400000000; j++) {
+    i += j;
+  }
+
+  return num ** 3;
+}
+
 const Home = props => {
   const [value, setValue] = useState(1);
   const [theme, setTheme] = useContext(ThemeContext);
-
-  // const logValue = () => console.log(value);
 
   const logValue = useCallback(() => {
     console.log(value);
@@ -36,9 +50,11 @@ const Home = props => {
     []
   );
 
+  const layoutValue = useMemo(() => computeValue(value), [value]);
+
   return (
     <div style={stylesMap[theme]}>
-      <h1>{value}</h1>
+      <h1>{layoutValue}</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, error!
       </p>
