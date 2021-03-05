@@ -1,7 +1,6 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import MenuOpenIcon from '@material-ui/icons/MenuOpen';
-import CloseIcon from '@material-ui/icons/Close';
+import { MenuOpen, Close } from '@material-ui/icons';
 import cx from 'classnames';
 import styles from './NavMenu.module.scss';
 
@@ -34,7 +33,7 @@ const NavMenu = props => {
 
   return (
     <div>
-      <MenuOpenIcon
+      <MenuOpen
         tabindex='1'
         onKeyDown={e => {
           if (e.key === 'Enter') {
@@ -45,7 +44,7 @@ const NavMenu = props => {
         fontSize='large'
       />
       <nav ref={refContainer} className={classNames}>
-        <CloseIcon
+        <Close
           tabindex='1'
           onKeyDown={e => {
             if (e.key === 'Enter') {
