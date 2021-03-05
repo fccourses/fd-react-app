@@ -5,8 +5,8 @@ import React, {
   useCallback,
   useMemo,
 } from 'react';
-import { ThemeContext } from '../../contexts';
-import { THEMES } from '../../constants';
+import { ThemeContext } from 'contexts';
+import { THEMES } from 'constants.js';
 import Loader from 'components/FuncLoader';
 
 const stylesMap = {
