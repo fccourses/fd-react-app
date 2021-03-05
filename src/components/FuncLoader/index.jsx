@@ -6,7 +6,6 @@ const Loader = props => {
   const { data: users, error, isFetching } = useData(getUsers);
   const count = useClicker();
 
-  console.log(count);
 
   return (
     <ol>

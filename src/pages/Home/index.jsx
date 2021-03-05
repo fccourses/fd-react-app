@@ -25,7 +25,7 @@ const stylesMap = {
 function computeValue (num) {
   let i = 0;
 
-  for (let j = 0; j < 400000000; j++) {
+  for (let j = 0; j < 400; j++) {
     i += j;
   }
 

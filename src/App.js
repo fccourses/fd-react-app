@@ -5,6 +5,7 @@ import SignUpPage from 'pages/SignUp';
 import ChatPage from 'pages/Chat';
 import { ThemeContext } from 'contexts';
 import { THEMES } from 'constants.js';
+import NavMenu from 'components/NavMenu';
 
 const App = props => {
   const themeState = useState(THEMES.LIGHT);
@@ -12,19 +13,8 @@ const App = props => {
   return (
     <ThemeContext.Provider value={themeState}>
       <BrowserRouter>
-        <nav>
-          <ul>
-            <li>
-              <Link to='/'>Home</Link>
-            </li>
-            <li>
-              <Link to='/sign-up'>Sign Up</Link>
-            </li>{' '}
-            <li>
-              <Link to='/chat'>Chat</Link>
-            </li>
-          </ul>
-        </nav>
+        
+        <NavMenu />
 
         <Switch>
           <Route exact path='/' component={HomePage} />
