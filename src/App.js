@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import HomePage from 'pages/Home';
 import SignUpPage from 'pages/SignUp';
+import ChatPage from 'pages/Chat';
 import { ThemeContext } from 'contexts';
 import { THEMES } from 'constants.js';
 
@@ -18,6 +19,9 @@ const App = props => {
             </li>
             <li>
               <Link to='/sign-up'>Sign Up</Link>
+            </li>{' '}
+            <li>
+              <Link to='/chat'>Chat</Link>
             </li>
           </ul>
         </nav>
@@ -25,6 +29,7 @@ const App = props => {
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/sign-up' component={SignUpPage} />
+          <Route path='/chat' component={ChatPage} />
         </Switch>
       </BrowserRouter>
     </ThemeContext.Provider>
