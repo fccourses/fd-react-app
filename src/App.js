@@ -6,6 +6,7 @@ import ChatPage from 'pages/Chat';
 import { ThemeContext } from 'contexts';
 import { THEMES } from 'constants.js';
 import NavMenu from 'components/NavMenu';
+import ToDoPage from 'pages/ToDo';
 
 const App = props => {
   const themeState = useState(THEMES.LIGHT);
@@ -20,6 +21,7 @@ const App = props => {
           <Route exact path='/' component={HomePage} />
           <Route path='/sign-up' component={SignUpPage} />
           <Route path='/chat' component={ChatPage} />
+          <Route path='/todo' component={ToDoPage} />
         </Switch>
       </BrowserRouter>
     </ThemeContext.Provider>
